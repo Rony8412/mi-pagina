@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Perfil Personal - Estudiante de Programación</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 20px;
+            margin-bottom: 2rem;
+            text-align: center;
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+            font-size: 2.5rem;
+        }
+
+        .subtitle {
+            color: #7f8c8d;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            margin-bottom: 2rem;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+
+        h2 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 0.5rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            text-align: justify;
+            font-size: 1.1rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            font-weight: bold;
+        }
+
+        tr:hover {
+            background-color: #f5f5f5;
+            transform: scale(1.01);
+            transition: all 0.3s ease;
+        }
+
+        ul, ol {
+            margin: 1rem 0;
+            padding-left: 2rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .hobby-images {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .hobby-card {
+            background: white;
+            border-radius: 15px;
+            padding: 1rem;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .hobby-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .hobby-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1rem;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+        }
+
+        form {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        textarea:focus,
+        select:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 10px rgba(52, 152, 219, 0.3);
+        }
+
+        select[multiple] {
+            height: 120px;
+        }
+
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+            
+            .hobby-images {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+        }
+
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+    </style>
+</head>
+<body>
+    <div class="animated-bg"></div>
+    
+    <div class="container">
+        <header>
+            <div class="profile-img">👨‍💻</div>
+            <h1>¡Hola! Soy RONY ANTONO DE LA ROSA DIA</h1>
+            <p class="subtitle">Estudiante de Programación | 23 años | Apasionado por la tecnología</p>
+        </header>
+
+        <section class="section">
+            <h2>📋 Información Personal</h2>
+            <p>
+                ¡Bienvenido a mi página personal! Soy un joven de 23 años, soltero y sin hijos, completamente 
+                enfocado en mi crecimiento personal y profesional. Actualmente me encuentro estudiando programación, 
+                una disciplina que me apasiona enormemente y que considero el futuro de la tecnología.
+            </p>
+            <p>
+                Mi vida gira en torno a tres grandes pasiones: los videojuegos, que no solo disfruto como 
+                entretenimiento sino que también me inspiran en mi carrera como programador; la música, 
+                que acompaña cada momento de mi día y me ayuda a mantener la creatividad fluyendo; y la cocina, 
+                un arte que me permite expresar mi creatividad de manera diferente y que me conecta con mis raíces culturales.
+            </p>
+
+            <table>
+                <tr>
+                    <th>Aspecto</th>
+                    <th>Información</th>
+                </tr>
+                <tr>
+                    <td>🎂 Edad</td>
+                    <td>23 años</td>
+                </tr>
+                <tr>
+                    <td>💑 Estado Civil</td>
+                    <td>Soltero</td>
+                </tr>
+                <tr>
+                    <td>👨‍👩‍👧‍👦 Hijos</td>
+                    <td>Ninguno</td>
+                </tr>
+                <tr>
+                    <td>🎓 Estudios</td>
+                    <td>Programación</td>
+                </tr>
+                <tr>
+                    <td>🏠 Situación</td>
+                    <td>Enfocado en desarrollo personal</td>
+                </tr>
+            </table>
+        </section>
+
+        <div class="grid-2">
+            <section class="section">
+                <h2>🎯 Mis Pasiones</h2>
+                <h3>Lista de Hobbies (Enumerada)</h3>
+                <ol>
+                    <li><strong>Videojuegos:</strong> Desde juegos indie hasta AAA, disfruto explorando mundos virtuales</li>
+                    <li><strong>Música:</strong> Escucho diversos géneros, desde rock hasta electrónica</li>
+                    <li><strong>Cocina:</strong> Experimento con recetas tradicionales y fusion</li>
+                    <li><strong>Programación:</strong> Desarrollo proyectos personales en mi tiempo libre</li>
+                </ol>
+
+                <h3>Habilidades Técnicas (No enumerada)</h3>
+                <ul>
+                    <li>HTML5 y CSS3 avanzado</li>
+                    <li>JavaScript ES6+</li>
+                    <li>React y Node.js</li>
+                    <li>Python para análisis de datos</li>
+                    <li>Git y control de versiones</li>
+                    <li>Bases de datos SQL y NoSQL</li>
+                </ul>
+            </section>
+
+            <section class="section">
+                <h2>🎮 Mis Intereses Visuales</h2>
+                <div class="hobby-images">
+                    <div class="hobby-card">
+                        <div class="hobby-icon">🎮</div>
+                        <h3>Gaming</h3>
+                        <p>RPGs, FPS, Indie Games</p>
+                    </div>
+                    <div class="hobby-card">
+                        <div class="hobby-icon">🎵</div>
+                        <h3>Música</h3>
+                        <p>Rock, Electronic, Pop</p>
+                    </div>
+                    <div class="hobby-card">
+                        <div class="hobby-icon">🍳</div>
+                        <h3>Cocina</h3>
+                        <p>Fusion, Tradicional</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <section class="section">
+            <h2>📚 Mi Carrera Académica</h2>
+            <p>
+                Actualmente estoy cursando una carrera en programación, donde he descubierto mi verdadera vocación. 
+                Cada día aprendo algo nuevo sobre algoritmos, estructuras de datos, y desarrollo de software. 
+                Mi objetivo es convertirme en un desarrollador full-stack competente y eventualmente especializarme 
+                en inteligencia artificial o desarrollo de videojuegos.
+            </p>
+            <p>
+                La programación no es solo mi carrera, sino también mi pasión. Paso horas explorando nuevos frameworks, 
+                contribuyendo a proyectos open-source y desarrollando aplicaciones que resuelvan problemas reales. 
+                Creo firmemente que la tecnología puede mejorar la vida de las personas, y quiero ser parte de esa transformación.
+            </p>
+        </section>
+
+        <section class="section">
+            <h2>📞 Formulario de Contacto</h2>
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="nombre">Nombre Completo:</label>
+                    <input type="text" id="nombre" name="nombre" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Correo Electrónico:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="interes">¿Qué te interesa? (Selección múltiple):</label>
+                    <select id="interes" name="interes" multiple required>
+                        <option value="programacion">Programación</option>
+                        <option value="videojuegos">Videojuegos</option>
+                        <option value="musica">Música</option>
+                        <option value="cocina">Cocina</option>
+                        <option value="colaboracion">Colaboración en proyectos</option>
+                        <option value="amistad">Amistad</option>
+                        <option value="trabajo">Oportunidades de trabajo</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="genero_musical">Género Musical Favorito:</label>
+                    <select id="genero_musical" name="genero_musical">
+                        <option value="">Selecciona un género</option>
+                        <option value="rock">Rock</option>
+                        <option value="pop">Pop</option>
+                        <option value="electronic">Electrónica</option>
+                        <option value="jazz">Jazz</option>
+                        <option value="classical">Clásica</option>
+                        <option value="reggaeton">Reggaeton</option>
+                        <option value="indie">Indie</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="mensaje">Mensaje:</label>
+                    <textarea id="mensaje" name="mensaje" rows="5" placeholder="Cuéntame sobre ti o deja tu mensaje aquí..."></textarea>
+                </div>
+
+                <button type="submit">🚀 Enviar Mensaje</button>
+            </form>
+        </section>
+
+        <footer class="section" style="text-align: center;">
+            <p>
+                <strong>¡Gracias por visitar mi página!</strong><br>
+                Siempre estoy abierto a conocer gente nueva, colaborar en proyectos interesantes, 
+                o simplemente charlar sobre tecnología, juegos o música. 
+                No dudes en contactarme a través del formulario de arriba.
+            </p>
+            <p style="color: #7f8c8d; margin-top: 1rem;">
+                © 2024 - Página Personal | Desarrollada con ❤️ y mucho código
+            </p>
+        </footer>
+    </div>
+
+    <script>
+        // Funcionalidad del formulario
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Obtener valores del formulario
+            const nombre = document.getElementById('nombre').value;
+            const email = document.getElementById('email').value;
+            const intereses = Array.from(document.getElementById('interes').selectedOptions).map(option => option.text);
+            const genero = document.getElementById('genero_musical').value;
+            const mensaje = document.getElementById('mensaje').value;
+            
+            // Mostrar mensaje de confirmación
+            alert(`¡Gracias ${nombre}! Tu mensaje ha sido enviado.\n\nIntereses seleccionados: ${intereses.join(', ')}\nGénero musical: ${genero || 'No especificado'}`);
+            
+            // Limpiar formulario
+            this.reset();
+        });
+
+        // Efectos hover para las cartas de hobbies
+        document.querySelectorAll('.hobby-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.05)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Efecto de typing para el título
+        function typeWriter(element, text, speed = 100) {
+            let i = 0;
+            element.innerHTML = '';
+            function typing() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(typing, speed);
+                }
+            }
+            typing();
+        }
+
+        // Animación de entrada suave
+        window.addEventListener('load', function() {
+            const sections = document.querySelectorAll('.section');
+            sections.forEach((section, index) => {
+                section.style.opacity = '0';
+                section.style.transform = 'translateY(30px)';
+                setTimeout(() => {
+                    section.style.transition = 'all 0.6s ease';
+                    section.style.opacity = '1';
+                    section.style.transform = 'translateY(0)';
+                }, index * 200);
+            });
+        });
+    </script>
+</body>
+</html>
